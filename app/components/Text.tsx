@@ -1,9 +1,5 @@
 "use client";
 
-if (typeof window === "undefined") {
-  module.exports = null;
-}
-
 import { FC } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -15,10 +11,6 @@ interface TextProps {}
 const Text: FC<TextProps> = ({}) => {
   const { transcript, listening, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser does not support speech recognition.</span>;
-  }
 
   const text = "hello dark my old friend";
   const arrText = text.split(" ");
@@ -37,6 +29,10 @@ const Text: FC<TextProps> = ({}) => {
   const handleStart = () => {
     SpeechRecognition.startListening();
   };
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser does not support speech recognition.</span>;
+  }
 
   return (
     <div>
