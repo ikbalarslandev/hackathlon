@@ -54,7 +54,7 @@ const Text: FC<TextProps> = ({}) => {
   return (
     <div className="flex flex-col justify-center items-center bg-mobile-bg  pt-[10vh]">
       {openHint && (
-        <p className=" absolute top-20 left-[5vw] w-[90vw] px-1 h-10 bg-text-bg  rounded flex items-center justify-center ">
+        <p className=" absolute top-[16vh] left-[5vw] w-[90vw] px-1 h-10 bg-text-bg  rounded flex items-center justify-center ">
           mirored version : {arrText[whichItem].split("").reverse().join("")}
         </p>
       )}
@@ -68,9 +68,7 @@ const Text: FC<TextProps> = ({}) => {
           {" " + arrText.slice(whichItem).join(" ")}
         </span>
       </p>
-      <p className="mt-6 text-xl font-bold bg-mobile-bg">
-        Microphone: {listening ? "Listening.." : "off"}
-      </p>
+
       <div className="flex justify-between w-full  px-[15vw] bg-mobile-bg items-center  pt-[8vh] ">
         <HiOutlineMicrophone
           className={`h-16 w-16 bg-mobile-bg ${
