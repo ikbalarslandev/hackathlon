@@ -6,6 +6,8 @@ import SpeechRecognition, {
 } from "react-speech-recognition";
 import { useState, useEffect } from "react";
 import { useSpeech } from "react-text-to-speech";
+import { HiOutlineMicrophone } from "react-icons/hi2";
+import { TbQuestionMark } from "react-icons/tb";
 
 interface TextProps {}
 
@@ -69,13 +71,19 @@ const Text: FC<TextProps> = ({}) => {
       <p className="mt-6 text-xl font-bold bg-mobile-bg">
         Microphone: {listening ? "Listening.." : "off"}
       </p>
-      <div className="flex justify-between w-full  px-[15vw] bg-mobile-bg  pt-[10vh] ">
-        <button className="btn btn-primary btn-sm" onClick={handleStart}>
-          Start
-        </button>
-        <button className="btn btn-secondary btn-sm" onClick={toggleHint}>
-          hint
-        </button>
+      <div className="flex justify-between w-full  px-[15vw] bg-mobile-bg items-center  pt-[8vh] ">
+        <HiOutlineMicrophone
+          className={`h-16 w-16 bg-mobile-bg ${
+            listening ? "text-red-400" : "text-gray-500"
+          }`}
+          onClick={handleStart}
+        />
+        <TbQuestionMark
+          className={`h-20 w-20  bg-mobile-bg   text-gray-500 ${
+            openHint ? "text-red-400" : "text-gray-500"
+          }`}
+          onClick={toggleHint}
+        />
       </div>
     </div>
   );
