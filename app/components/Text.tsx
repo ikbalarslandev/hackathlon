@@ -50,26 +50,26 @@ const Text: FC<TextProps> = ({}) => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center bg-mobile-bg  pt-[10vh]">
       {openHint && (
-        <p className=" absolute top-20 left-[15vw] w-[70vw] px-1 h-10 bg-gray-100 rounded">
-          mirored version: {arrText[whichItem].split("").reverse().join("")}
+        <p className=" absolute top-20 left-[5vw] w-[90vw] px-1 h-10 bg-text-bg  rounded flex items-center justify-center ">
+          mirored version : {arrText[whichItem].split("").reverse().join("")}
         </p>
       )}
-      <p className=" mt-6 px-2 pt-2 pb-32 mb-4 rounded-md bg-base-100 lg:w-96 lg:h-48 w-64 h-64">
-        <span className="text-gray-500 bg-base-100">
+      <p className=" bg-text-bg p-2 text-xl  rounded h-[40vh] w-[90vw] ">
+        <span className="text-gray-500 bg-text-bg">
           {" "}
           {" " + arrText.slice(0, -arrText.length + whichItem).join(" ")}
         </span>
-        <span className="bg-base-100">
+        <span className="bg-text-bg">
           {" "}
           {" " + arrText.slice(whichItem).join(" ")}
         </span>
       </p>
-      <p className="mb-2 text-xl font-bold">
+      <p className="mt-6 text-xl font-bold bg-mobile-bg">
         Microphone: {listening ? "Listening.." : "off"}
       </p>
-      <div className="flex justify-between ">
+      <div className="flex justify-between w-full  px-[15vw] bg-mobile-bg  pt-[10vh] ">
         <button className="btn btn-primary btn-sm" onClick={handleStart}>
           Start
         </button>
