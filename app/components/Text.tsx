@@ -17,7 +17,7 @@ const Text: FC<TextProps> = ({}) => {
 
   const [openHint, setOpenHint] = useState(false);
 
-  const text = "hello dark my old friend";
+  const text = "the friendly dog chased the ball in the sunny park";
   const arrText = text.split(" ");
 
   const [whichItem, setWhichItem] = useState(-1);
