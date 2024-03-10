@@ -12,6 +12,8 @@ const Text: FC<TextProps> = ({}) => {
   const { transcript, listening, browserSupportsSpeechRecognition } =
     useSpeechRecognition();
 
+  const [openHint, setOpenHint] = useState(false);
+
   const text = "hello dark my old friend";
   const arrText = text.split(" ");
 
@@ -26,6 +28,10 @@ const Text: FC<TextProps> = ({}) => {
     setWhichItem(0);
   }, []);
 
+  const toggleHint = () => {
+    setOpenHint(!openHint);
+  };
+
   const handleStart = () => {
     SpeechRecognition.startListening();
   };
@@ -36,12 +42,12 @@ const Text: FC<TextProps> = ({}) => {
 
   return (
     <div>
+      {openHint && (
+        <p className=" absolute top-20 left-[15vw] w-[70vw] px-1 h-10 bg-gray-100 rounded">
+          mirored version: {arrText[whichItem].split("").reverse().join("")}
+        </p>
+      )}
       <p className=" mt-6 px-2 pt-2 pb-32 mb-4 rounded-md bg-base-100 lg:w-96 lg:h-48 w-64 h-64">
-        {/* {transcript.toLowerCase() === arrText[whichItem - 1] ? (
-          <span className="text-red-500">{transcript}</span>
-        ) : (
-          transcript + " "
-        )} */}
         <span className="text-gray-500 bg-base-100">
           {" "}
           {" " + arrText.slice(0, -arrText.length + whichItem).join(" ")}
@@ -52,13 +58,15 @@ const Text: FC<TextProps> = ({}) => {
         </span>
       </p>
       <p className="mb-2 text-xl font-bold">
-        {whichItem} Microphone: {listening ? "Listening.." : "off"}
+        Microphone: {listening ? "Listening.." : "off"}
       </p>
       <div className="flex justify-between ">
         <button className="btn btn-primary btn-sm" onClick={handleStart}>
           Start
         </button>
-        <button className="btn btn-secondary btn-sm">hint</button>
+        <button className="btn btn-secondary btn-sm" onClick={toggleHint}>
+          hint
+        </button>
       </div>
     </div>
   );
