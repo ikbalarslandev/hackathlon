@@ -42,11 +42,11 @@ const Text: FC<TextProps> = ({}) => {
         ) : (
           transcript + " "
         )} */}
-        <span className="text-gray-500">
+        <span className="text-gray-500 bg-base-100">
           {" "}
           {" " + arrText.slice(0, -arrText.length + whichItem).join(" ")}
         </span>
-        <span className="text-blue-700">
+        <span className="bg-base-100">
           {" "}
           {" " + arrText.slice(whichItem).join(" ")}
         </span>
