@@ -1,7 +1,7 @@
 import Text from "./components/Text";
 
 export const metadata = {
-  title: "Hackathlon",
+  title: "Solution Sprint",
   description: "🎙️ > 📝",
 };
 
