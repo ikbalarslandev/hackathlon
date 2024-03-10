@@ -5,6 +5,7 @@ import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import { useState, useEffect } from "react";
+import { useSpeech } from "react-text-to-speech";
 
 interface TextProps {}
 
@@ -30,11 +31,19 @@ const Text: FC<TextProps> = ({}) => {
 
   const toggleHint = () => {
     setOpenHint(!openHint);
+
+    if (!openHint) {
+      start();
+    }
   };
 
   const handleStart = () => {
     SpeechRecognition.startListening();
   };
+
+  const { Text, speechStatus, start, pause, stop } = useSpeech({
+    text: arrText[whichItem],
+  });
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser does not support speech recognition.</span>;
